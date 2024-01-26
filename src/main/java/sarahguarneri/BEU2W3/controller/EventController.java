@@ -27,4 +27,8 @@ public class EventController {
         return eventService.save(body);
     }
 
+    //POST IMAGE
+//    @PostMapping("/upload")
+//    public String uploadImageToEvent(@RequestParam("url img") Multifile body)
+
 }

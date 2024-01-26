@@ -22,11 +22,11 @@ public class EventService {
     public Event
     save(CreateEventDTO body){
         Event newEvent = new Event();
-        newEvent.setTitle(body.getTitle());
-        newEvent.setDescription(body.getDescription());
-        newEvent.setDate(body.getDate());
-        newEvent.setPlace(body.getPlace());
-        newEvent.setImage(body.getImage());
+        newEvent.setTitle(body.title());
+        newEvent.setDescription(body.description());
+        newEvent.setDate(body.date());
+        newEvent.setPlace(body.place());
+        newEvent.setImage(body.image());
 //        newEvent.setUsers(body.getUserId());
         return eventDAO.save(newEvent);
     }

@@ -20,11 +20,15 @@ public class UserService {
 
     public User save(CreateUserDTO body){
         User newUser = new User();
-        newUser.setEmail(body.getEmail());
-        newUser.setName(body.getName());
-        newUser.setSurname(body.getSurname());
-        newUser.setPassword(body.getPassword());
-        newUser.setRole(body.getRole());
+        newUser.setEmail(body.email());
+        newUser.setName(body.name());
+        newUser.setSurname(body.surname());
+        newUser.setPassword(body.password());
+        newUser.setRole(body.role());
         return userDAO.save(newUser);
+    }
+
+    public User findDyEmail(String email){
+        return userDAO.findByEmail(email);
     }
 }
