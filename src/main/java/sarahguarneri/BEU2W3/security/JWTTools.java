@@ -22,7 +22,18 @@ public class JWTTools {
                 .compact();
     }
 
-    public void verifyToken(){
+    public void verifyToken(String accessToken){
+        try{
+            Jwts.parser().verifyWith(Keys.hmacShaKeyFor(secret.getBytes())).build().parse(accessToken);
+        } catch(Exception e){
+            throw new RuntimeException("Problemi con il token, effettuare di nuovo il login");
+        }
+    }
 
+    public String extractIdFromToken(String token){
+        return Jwts.parser()
+                .verifyWith(Keys.hmacShaKeyFor(secret.getBytes()))
+                .build()
+                .parseSignedClaims(token).getPayload().getSubject();
     }
 }

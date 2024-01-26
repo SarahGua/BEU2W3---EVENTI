@@ -7,6 +7,8 @@ import sarahguarneri.BEU2W3.repository.CreateUserDTO;
 import sarahguarneri.BEU2W3.repository.UserDAO;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -26,6 +28,10 @@ public class UserService {
         newUser.setPassword(body.password());
         newUser.setRole(body.role());
         return userDAO.save(newUser);
+    }
+
+    public Optional<User> findById(UUID id){
+        return userDAO.findById(id);
     }
 
     public User findDyEmail(String email){
