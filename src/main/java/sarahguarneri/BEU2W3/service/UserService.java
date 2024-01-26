@@ -1,6 +1,7 @@
 package sarahguarneri.BEU2W3.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import sarahguarneri.BEU2W3.entites.Role;
 import sarahguarneri.BEU2W3.entites.User;
@@ -17,6 +18,9 @@ public class UserService {
     @Autowired
     private UserDAO userDAO;
 
+    @Autowired
+    private PasswordEncoder bcrypt;
+
     public List<User> getUsers(){
         return userDAO.findAll();
     }
@@ -26,7 +30,7 @@ public class UserService {
         newUser.setEmail(body.email());
         newUser.setName(body.name());
         newUser.setSurname(body.surname());
-        newUser.setPassword(body.password());
+        newUser.setPassword(bcrypt.encode(body.password()));
         newUser.setRole(Role.ORGANIZER);
         return userDAO.save(newUser);
     }

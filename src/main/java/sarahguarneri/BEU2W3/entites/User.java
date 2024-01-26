@@ -1,5 +1,6 @@
 package sarahguarneri.BEU2W3.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +18,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString
+@JsonIgnoreProperties({"password"})
 public class User implements UserDetails {
     @Id
     @GeneratedValue
