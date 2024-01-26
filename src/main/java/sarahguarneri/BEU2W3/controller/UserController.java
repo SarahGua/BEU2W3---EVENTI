@@ -1,6 +1,7 @@
 package sarahguarneri.BEU2W3.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import sarahguarneri.BEU2W3.entites.User;
 import sarahguarneri.BEU2W3.repository.CreateUserDTO;
@@ -23,6 +24,7 @@ public class UserController {
 
     //POST
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public User createUser(@RequestBody CreateUserDTO body){
         return userService.save(body);
     }

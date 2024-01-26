@@ -2,6 +2,7 @@ package sarahguarneri.BEU2W3.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sarahguarneri.BEU2W3.entites.Role;
 import sarahguarneri.BEU2W3.entites.User;
 import sarahguarneri.BEU2W3.repository.CreateUserDTO;
 import sarahguarneri.BEU2W3.repository.UserDAO;
@@ -26,7 +27,7 @@ public class UserService {
         newUser.setName(body.name());
         newUser.setSurname(body.surname());
         newUser.setPassword(body.password());
-        newUser.setRole(body.role());
+        newUser.setRole(Role.ORGANIZER);
         return userDAO.save(newUser);
     }
 
